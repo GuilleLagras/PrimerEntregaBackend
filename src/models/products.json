@@ -1,0 +1,79 @@
+[
+    {
+        "title": "Resident evil",
+        "description": "Capcom",
+        "price": 25000,
+        "category": "Terror",
+        "stock": 5,
+        "code": "RE",
+        "status": true,
+        "thumbnails": "ASD",
+        "id": "Z"
+    },
+    {
+        "title": "Silent Hill",
+        "description": "Konami",
+        "price": 21000,
+        "category": "Terror",
+        "stock": 8,
+        "code": "SH",
+        "status": true,
+        "thumbnails": "Silen",
+        "id": "0"
+    },
+    {
+        "title": "GTA",
+        "description": "Rockstar",
+        "price": 14000,
+        "category": "Accion",
+        "stock": 12,
+        "code": "GTA",
+        "status": true,
+        "thumbnails": "GTA",
+        "id": "a"
+    },
+    {
+        "title": "Spiderman",
+        "description": "Marvel",
+        "price": 18000,
+        "category": "Accion",
+        "stock": 12,
+        "code": "GoHome",
+        "status": true,
+        "thumbnails": "spider",
+        "id": "v"
+    },
+    {
+        "title": "FIFA23",
+        "description": " Electronics arts",
+        "price": 18000,
+        "category": "Deporte",
+        "stock": 20,
+        "code": "EA Sports",
+        "status": true,
+        "thumbnails": "Futbol",
+        "id": "S"
+    },
+    {
+        "title": "Call of Duty",
+        "description": " Vanguard",
+        "price": 13000,
+        "category": "Shooter",
+        "stock": 14,
+        "code": "Activision",
+        "status": true,
+        "thumbnails": "Disparos",
+        "id": "F"
+    },
+    {
+        "title": "Genshin IMpact",
+        "description": " oyoverse",
+        "price": 0,
+        "category": "Fantasia",
+        "stock": 14,
+        "code": "GI",
+        "status": true,
+        "thumbnails": "Magia",
+        "id": "A"
+    }
+]
