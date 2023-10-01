@@ -5,15 +5,24 @@ const productRouter =Router();
 const product = new ProductManager();
 
 
-//obtenemos productos del json
-productRouter.get("/", async (req, res) => {
-    res.send(await product.getProducts());
-});
+
 
 //Buscar por id
 productRouter.get("/:id", async (req, res) => {
     let id = req.params.id
     res.send(await product.getProductsById(id));
+});
+
+productRouter.get("/", async (req, res) => {
+    const { limit } = req.query;
+
+    if (limit) {
+        const products = await product.getAllProducts(limit);
+        res.send(products);
+    } else {
+        const products = await product.getProducts();
+        res.send(products);
+    }
 });
 
 //agregar nuevo producto

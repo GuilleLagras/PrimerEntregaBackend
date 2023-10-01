@@ -36,11 +36,15 @@ class ProductManager {
 
     //agregar prodcutos
     addProducts = async (product) => {
+        if (!product.title ||!product.description ||isNaN(product.price) ||isNaN(product.stock) ||!product.code) {
+            return ("Faltan datos obligatorios del producto");
+        }
+
         let productsOld = await this.readProducts();
         product.id = nanoid(1);
-        let productAll = [...productsOld, product]; //toma lo q leyo productsParse y agrega nuevo productp
+        let productAll = [...productsOld, product];
         await this.writeProducts(productAll);
-        return "Producto agregado con exito" // metodo para agregar productos al JSON
+        return "Producto agregado con éxito";
     };
 
     //Obtener productos
@@ -57,20 +61,34 @@ class ProductManager {
             return productById;
     };
 
-    
+    //Agreegamos Limit
+    getAllProducts = async (queryLimit) => {
+        try {
+            const products = await this.readProducts();
 
+            if (queryLimit) {
+                const limit = parseInt(queryLimit);
+                if (!isNaN(limit) && limit > 0) {
+                    return products.slice(0, limit); // Limitar resultados según el parámetro
+                }
+            }
+            return products;
+        } catch (error) {
+            throw error;
+        }
+    };
 
     //Actualizar producto
     updateProducts = async (id, product) => {
         let productById = await this.exist(id); //buscamos el producto a actualizar
         if (!productById)
             return "No encontramos este producto"
-            await this.deleteProduct(id);        //borramos el producto para actualizarlo con la nueva info
+        await this.deleteProduct(id);        //borramos el producto para actualizarlo con la nueva info
         let productsOld = await this.readProducts(); //traemos los productos q estan
-        let products = [{ ...product, id: id },...productsOld] //sumamos el nuevo prodcuto a los q ya estaban
+        let products = [{ ...product, id: id }, ...productsOld] //sumamos el nuevo prodcuto a los q ya estaban
         await this.writeProducts(products)
         return "Producto actualizado"
-    }
+    };
 
     deleteProduct = async (id) => {
         let products = await this.readProducts();
@@ -83,6 +101,6 @@ class ProductManager {
             return "El producto que desea elminar no existe"
         }
     }
-}
+};
 
 export default ProductManager;
